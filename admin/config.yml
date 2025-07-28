@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: xdgdotcom-beep/EcomFusion
+  branch: main
+
+# Optional: Enable editorial workflow for drafts/publishing
+# publish_mode: editorial_workflow
+
+# Where uploaded media (images) will be stored in your GitHub repo
+media_folder: "assets/uploads"
+# The public path used in your website to reference these images
+public_folder: "/assets/uploads"
+
+collections:
+  # --- Products Collection ---
+  - name: "products" # Unique identifier for this content type
+    label: "Products" # Name displayed in the CMS UI
+    folder: "data/products" # Folder in your repo where product data files will be stored
+    create: true # Allow creation of new products from the CMS
+    delete: true # Allow deletion of products from the CMS
+    editor:
+      preview: false # Set to true if you set up custom previews (more advanced)
+    slug: "{{slug}}" # Filename template (e.g., 'chrono-mark-iv.json')
+
+    fields: # Define the fields for each product
+      - {label: "Product ID", name: "productId", widget: "string", hint: "Unique identifier (e.g., 'chrono_mark_iv'). Used in your code to find products."}
+      - {label: "Product Name", name: "name", widget: "string", required: true}
+      - {label: "Category", name: "category", widget: "string", required: true, hint: "e.g., Smartwatch, Apparel, Audio, Footwear"}
+      - {label: "Price", name: "price", widget: "number", value_type: "float", step: 0.01, required: true}
+      - {label: "Description", name: "description", widget: "markdown", required: true, default: "A captivating description of your product..."}
+      - {label: "Image", name: "imageUrl", widget: "image", required: true, choose_url: false, allow_multiple: false, media_folder: "assets/uploads", public_folder: "/assets/uploads", hint: "Upload the main image for this product."}
+      - {label: "Stock", name: "stock", widget: "number", value_type: "int", required: false, default: 100}
+      - {label: "Is On Sale?", name: "isOnSale", widget: "boolean", default: false}
+      - {label: "Sale Price", name: "salePrice", widget: "number", value_type: "float", step: 0.01, required: false, default: 0}
+      - {label: "Features (Comma Separated)", name: "features", widget: "string", required: false, pattern: "^[a-zA-Z0-9-, ]*$", hint: "e.g., Waterproof, GPS, Touchscreen"}
