@@ -1,7 +1,10 @@
 backend:
   name: github
-  repo: xdgdotcom-beep/EcomFusion # Your GitHub repo
-  branch: main # Your main branch name
+  repo: xdgdotcom-beep/EcomFusion
+  branch: main
+  auth_scope: repo
+  base_url: https://fushionx.netlify.app
+  auth_endpoint: api/auth # Your main branch name
 
 # Optional: Enable editorial workflow for drafts/publishing
 # publish_mode: editorial_workflow
