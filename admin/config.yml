@@ -1,0 +1,77 @@
+backend:
+  name: git-gateway # <<<<<<<<<<<<<<<<< CRITICAL CHANGE HERE
+  repo: xdgdotcom-beep/EcomFusion
+  branch: main
+
+publish_mode: editorial_workflow # <<<<<<<<<<<<<<<<< MOVED HERE
+
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+collections:
+  - name: "products"
+    label: "Products"
+    folder: "data/products"
+    create: true
+    delete: true
+    editor:
+      preview: false
+    slug: "{{slug}}"
+    fields:
+      - label: "Product ID"
+        name: "productId"
+        widget: "string"
+        hint: "Unique identifier (e.g., 'chrono_mark_iv'). Used in your code to find products."
+      - label: "Product Name"
+        name: "name"
+        widget: "string"
+        required: true
+      - label: "Category"
+        name: "category"
+        widget: "string"
+        required: true
+        hint: "e.g., Smartwatch, Apparel, Audio, Footwear"
+      - label: "Price"
+        name: "price"
+        widget: "number"
+        value_type: "float"
+        step: 0.01
+        required: true
+      - label: "Description"
+        name: "description"
+        widget: "markdown"
+        required: true
+        default: "A captivating description of your product..."
+      - label: "Image"
+        name: "imageUrl"
+        widget: "image"
+        required: true
+        choose_url: false
+        allow_multiple: false
+        media_folder: "assets/uploads" # Optional, but good to include
+        public_folder: "/assets/uploads" # Optional, but good to include
+      - label: "Stock"
+        name: "stock"
+        widget: "number"
+        value_type: "int"
+        required: false
+        default: 100
+      - label: "Is On Sale?"
+        name: "isOnSale"
+        widget: "boolean"
+        default: false
+      - label: "Sale Price"
+        name: "salePrice"
+        widget: "number"
+        value_type: "float"
+        step: 0.01
+        required: false
+        default: 0
+      - label: "Features (Comma Separated)"
+        name: "features"
+        widget: "string"
+        required: false
+        pattern:
+          - "^[a-zA-Z0-9-, ]*$"
+          - "Features can only contain letters, numbers, commas, hyphens, and spaces."
+        hint: "e.g., Waterproof, GPS, Touchscreen"
