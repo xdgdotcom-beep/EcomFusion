@@ -1,7 +1,7 @@
 backend:
   name: github
-  repo: xdgdotcom-beep/EcomFusion
-  branch: main
+  repo: xdgdotcom-beep/EcomFusion # Your GitHub repo
+  branch: main # Your main branch name
 
 # Optional: Enable editorial workflow for drafts/publishing
 # publish_mode: editorial_workflow
@@ -11,6 +11,7 @@ media_folder: "assets/uploads"
 # The public path used in your website to reference these images
 public_folder: "/assets/uploads"
 
+# Define the collections (content types) you want to manage
 collections:
   # --- Products Collection ---
   - name: "products" # Unique identifier for this content type
@@ -20,9 +21,10 @@ collections:
     delete: true # Allow deletion of products from the CMS
     editor:
       preview: false # Set to true if you set up custom previews (more advanced)
-    slug: "{{slug}}" # Filename template (e.g., 'chrono-mark-iv.json')
+    slug: "{{slug}}" # Filename template (e.g., 'chrono-mark-iv.json' from product name)
 
-    fields: # Define the fields for each product
+    # Define the fields for each product entry
+    fields:
       - {label: "Product ID", name: "productId", widget: "string", hint: "Unique identifier (e.g., 'chrono_mark_iv'). Used in your code to find products."}
       - {label: "Product Name", name: "name", widget: "string", required: true}
       - {label: "Category", name: "category", widget: "string", required: true, hint: "e.g., Smartwatch, Apparel, Audio, Footwear"}
@@ -32,4 +34,6 @@ collections:
       - {label: "Stock", name: "stock", widget: "number", value_type: "int", required: false, default: 100}
       - {label: "Is On Sale?", name: "isOnSale", widget: "boolean", default: false}
       - {label: "Sale Price", name: "salePrice", widget: "number", value_type: "float", step: 0.01, required: false, default: 0}
-      - {label: "Features (Comma Separated)", name: "features", widget: "string", required: false, pattern: "^[a-zA-Z0-9-, ]*$", hint: "e.g., Waterproof, GPS, Touchscreen"}
+      - {label: "Features (Comma Separated)", name: "features", widget: "string", required: false,
+        pattern: ["^[a-zA-Z0-9-, ]*$", "Features can only contain letters, numbers, commas, hyphens, and spaces."], # <-- THIS IS THE CORRECTED LINE
+        hint: "e.g., Waterproof, GPS, Touchscreen"}
