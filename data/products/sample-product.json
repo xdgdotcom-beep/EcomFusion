@@ -1,0 +1,12 @@
+{
+  "productId": "chrono_mark_iv",
+  "name": "Chrono Mark IV",
+  "category": "Smartwatch",
+  "price": 249.99,
+  "description": "A futuristic smartwatch packed with AI-driven features, perfect for fitness tracking, scheduling, and communication.",
+  "imageUrl": "/assets/uploads/chrono-mark-iv.jpg",
+  "stock": 120,
+  "isOnSale": true,
+  "salePrice": 199.99,
+  "features": "AI Assistant, GPS, Waterproof, OLED Display"
+}
